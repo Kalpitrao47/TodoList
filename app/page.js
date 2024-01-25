@@ -23,6 +23,13 @@ const page = () => {
     console.log("mainTask",mainTask);
   }
 
+  const deleteHandler = (i) =>{
+    let copyTask = [...mainTask]
+    copyTask.splice(i,1);
+    setMainTask(copyTask);
+
+  }
+
   let renderTask = <h2>No Task Available</h2>
 
   // renderTask = {mainTask.map((t,i)=>{
@@ -40,7 +47,9 @@ if (mainTask.length>0){
         <div key={i} className='flex justify-evenly'>
           <h1>{t.title}</h1>
           <h2>{t.desc}</h2>
-        </div>
+        <button onClick={deleteHandler} className='bg-red-500 border border-black rounded-lg p-1'>Delete</button>
+          </div>
+      
       ))}
     </div>
   );
